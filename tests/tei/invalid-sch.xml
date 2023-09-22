@@ -1,0 +1,30 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Invalid file (not valid against RNG)</title>
+      </titleStmt>
+      <publicationStmt>
+        <p><date from="2021" notAfter="2019"/>Publication information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p xml:id="sdp">Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <facsimile>
+  <surface>
+    <path points="1,2 3,4"/>
+    <!--This should be an error: last point and first point the same-->
+    <path points="1,2 3,4, 1,2"/>
+  </surface>
+  </facsimile>
+  <text>
+  <body>
+    <p>
+      <ref target="#sdp" cRef="Source">The source of the file.</ref>
+    </p>
+  </body>
+
+  </text>
+</TEI>

@@ -1,0 +1,27 @@
+{
+  "name": "schematron",
+  "version": "0.0.0",
+  "description": "Schematron validation in node",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node ./tests/index.js",
+    "postinstall": "npm run sef",
+    "sef": "npm run sef:extract && npm run sef:pipeline && npm run sef:runner && npm run sef:results",
+    "sef:extract": "xslt3 -xsl:./lib/schematron/ExtractSchFromRNG-2.xsl -export:./src/stylesheets/sef/ExtractSchFromRNG-2.sef.json -nogo",
+    "sef:pipeline": "xslt3 -xsl:./lib/schxslt-1.9.5/2.0/pipeline-for-svrl.xsl -export:./src/stylesheets/sef/pipeline-for-svrl.sef.json -nogo",
+    "sef:results": "xslt3 -xsl:./lib/results.xsl -export:./src/stylesheets/sef/results.sef.json -nogo",
+    "sef:runner": "xslt3 -xsl:./lib/runner.xsl -export:./src/stylesheets/sef/runner.sef.json -nogo"
+  },
+  "author": "Joey Takeda",
+  "license": "MIT",
+  "devDependencies": {
+    "xslt3": "^2.5.0"
+  },
+  "optionalDependencies": {
+    "xslt3": "^2.5.0"
+  },
+  "dependencies": {
+    "saxon-js": "^2.5.0"
+  }
+}
