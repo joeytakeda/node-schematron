@@ -1,7 +1,6 @@
 import Schematron from "../src/Schematron.js";
 import fs from "fs";
 import { URL } from "url";
-import { spawn } from "node:child_process";
 
 const FILES_DIR = new URL("./tei", import.meta.url).pathname;
 const RNG_FILE = new URL("./rng/tei_all.rng", import.meta.url).pathname;
