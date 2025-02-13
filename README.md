@@ -16,7 +16,7 @@ npm i node-xsl-schematron
 2. Then include Schematron:
 
 ```
-import Schematron from "node-schematron";
+import Schematron from "node-xsl-schematron";
 
 ```
 
@@ -25,13 +25,13 @@ import Schematron from "node-schematron";
 1. Create a new Schematron object:
 
 ```js
-import Schematron from "node-schematron";
+import Schematron from "node-xsl-schematron";
 const sch = new Schematron();
 ```
 Note that you do not need to set any options; however, setting the `useExec` option to `true` provides significant speed up (at the cost of needing to use `xslt3`):
 
 ```js
-import Schematron from "node-schematron";
+import Schematron from "node-xsl-schematron";
 const sch = new Schematron({
     useExec: true
 })
@@ -40,7 +40,7 @@ const sch = new Schematron({
 2. Set the RNG contents (i.e. text) from which the schematron should be extracted or the schematron text itself (Note that these methods both return Promises):
 
 ```js
-import Schematron from "node-schematron";
+import Schematron from "node-xsl-schematron";
 const sch = new Schematron();
 await sch.setRNG(myRNGText);
 // OR, if you have a schematron file
@@ -50,7 +50,7 @@ await sch.setSchematron(mySCHText);
 3. The `validate()` method validates an XML file against the configured schematron and returns an array of validation result objects:
 
 ```js
-import Schematron from "node-schematron";
+import Schematron from "node-xsl-schematron";
 const sch = new Schematron();
 await sch.setRNG(myRNGText);
 const results = await sch.validate(myXMLFile);
