@@ -9,7 +9,7 @@ Small proof-of-concept / experimental module for schematron validation in JS.
 1. If you're using NPM, then you should be able to install like so:
 
 ```
-npm i git+https://github.com/joeytakeda/node-schematron.git
+npm i node-xsl-schematron
 
 ```
 
@@ -41,7 +41,7 @@ const sch = new Schematron({
 
 ```js
 import Schematron from "node-schematron";
-const Sch = new Schematron();
+const sch = new Schematron();
 await sch.setRNG(myRNGText);
 // OR, if you have a schematron file
 await sch.setSchematron(mySCHText);
@@ -51,7 +51,7 @@ await sch.setSchematron(mySCHText);
 
 ```js
 import Schematron from "node-schematron";
-const Sch = new Schematron();
+const sch = new Schematron();
 await sch.setRNG(myRNGText);
 const results = await sch.validate(myXMLFile);
 console.log(results);
@@ -64,8 +64,7 @@ console.log(results);
     text: 'Abstract model violation: Paragraphs may not occur inside other paragraphs or ab elements.'
   }
 ] 
-  
- * /
+* /
 
 ```
 

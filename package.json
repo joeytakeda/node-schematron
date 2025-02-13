@@ -1,8 +1,8 @@
 {
-  "name": "schematron",
-  "version": "0.0.0",
-  "description": "Schematron validation in node",
-  "main": "index.js",
+  "name": "node-xsl-schematron",
+  "version": "1.0.0",
+  "description": "Schematron extraction and validation in node using SaxonJS.",
+  "main": "src/Schematron.js",
   "type": "module",
   "scripts": {
     "test": "node ./tests/index.js",
@@ -13,15 +13,17 @@
     "sef:results": "xslt3 -xsl:./lib/results.xsl -export:./src/stylesheets/sef/results.sef.json -nogo",
     "sef:runner": "xslt3 -xsl:./lib/runner.xsl -export:./src/stylesheets/sef/runner.sef.json -nogo"
   },
-  "author": "Joey Takeda",
+  "author": {
+    "name": "Joey Takeda",
+    "url": "https://github.com/joeytakeda"
+  },
+  "homepage": "https://github.com/joeytakeda/node-schematron",
+  "repository": "github:joeytakeda/node-schematron",
   "license": "MIT",
   "devDependencies": {
-    "xslt3": "^2.5.0"
-  },
-  "optionalDependencies": {
-    "xslt3": "^2.5.0"
+    "xslt3": "^2.7.0"
   },
   "dependencies": {
-    "saxon-js": "^2.5.0"
+    "saxon-js": "^2.7.0"
   }
 }

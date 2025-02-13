@@ -1,3 +1,7 @@
+<?xml-model
+  href="https://vault.tei-c.org/P5/current/xml/tei/custom/schema/relaxng/tei_all.rng"
+  schematypens="http://relaxng.org/ns/structure/1.0"
+  type="application/xml"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -16,7 +20,7 @@
   <surface>
     <path points="1,2 3,4"/>
     <!--This should be an error: last point and first point the same-->
-    <path points="1,2 3,4, 1,2"/>
+    <path points="1,2 3,4"/>
   </surface>
   </facsimile>
   <text>
@@ -25,6 +29,5 @@
       <ref target="#sdp" cRef="Source">The source of the file.</ref>
     </p>
   </body>
-
   </text>
 </TEI>
