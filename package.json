@@ -1,6 +1,6 @@
 {
   "name": "node-xsl-schematron",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Schematron extraction and validation in node using SaxonJS.",
   "main": "src/Schematron.js",
   "type": "module",
