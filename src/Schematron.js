@@ -144,11 +144,18 @@ export default class Schematron {
       await fs.mkdir(tmpDir);
     }
     await fs.writeFile(path.join(tmpDir, 'svrl.xsl'), svrl);
-    exec("xslt3", [
-      `-xsl:${path.join(tmpDir, 'svrl.xsl')}`,
-      `-export:${path.join(tmpDir, 'svrl.sef.json')}`,
-      "-nogo",
-    ]);
+    // exec can be slow to run so we await its resolution.
+    await new Promise((resolve, reject) => {
+      exec(`xslt3 -xsl:${path.join(tmpDir, 'svrl.xsl')} -export:${path.join(tmpDir, 'svrl.sef.json')} -nogo`, 
+        (error) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve();
+        }
+      );
+    });
     const sef = await fs.readFile(path.join(tmpDir, 'svrl.sef.json'), "utf-8");
     return sef;
   }
