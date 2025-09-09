@@ -21,10 +21,10 @@
   "repository": "github:joeytakeda/node-schematron",
   "license": "MIT",
   "dependencies": {
-    "saxon-js": "^2.7.0",
-    "xslt3": "^2.7.0"
+    "saxon-js": "^2.7.0"
   },
   "devDependencies": {
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "xslt3": "^2.7.0"
   }
 }
