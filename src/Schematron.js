@@ -1,8 +1,8 @@
 import SaxonJS from "saxon-js";
-import minimist from "minimist";
 import { existsSync as exists } from "node:fs";
 import fs from "node:fs/promises";
-import { URL } from "url";
+import { fileURLToPath } from "url";
+import path from "path";
 import { exec } from "node:child_process";
 import { default as Stylesheets } from "./stylesheets/index.js";
 
@@ -137,17 +137,26 @@ export default class Schematron {
    * @returns
    */
   async _transformSVRLtoSEF(svrl) {
-    const tmpDir = new URL("./_tmp/", import.meta.url).pathname;
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const tmpDir = path.join(__dirname, '_tmp');
     if (!exists(tmpDir)) {
       await fs.mkdir(tmpDir);
     }
-    await fs.writeFile(`${tmpDir}svrl.xsl`, svrl);
-    exec("xslt3", [
-      `-xsl:${tmpDir}/svrl.xsl`,
-      `-export:${tmpDir}/svrl.sef.json`,
-      "-nogo",
-    ]);
-    const sef = await fs.readFile(`${tmpDir}/svrl.sef.json`, "utf-8");
+    await fs.writeFile(path.join(tmpDir, 'svrl.xsl'), svrl);
+    // exec can be slow to run so we await its resolution.
+    await new Promise((resolve, reject) => {
+      exec(`xslt3 -xsl:${path.join(tmpDir, 'svrl.xsl')} -export:${path.join(tmpDir, 'svrl.sef.json')} -nogo`, 
+        (error) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve();
+        }
+      );
+    });
+    const sef = await fs.readFile(path.join(tmpDir, 'svrl.sef.json'), "utf-8");
     return sef;
   }
 
