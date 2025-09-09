@@ -1,7 +1,7 @@
-import extractFromRng from "./sef/ExtractSchFromRNG-2.sef.json" assert { type: "json" };
-import svrlPipeline from "./sef/pipeline-for-svrl.sef.json" assert { type: "json" };
-import runner from "./sef/runner.sef.json" assert { type: "json" };
-import results from "./sef/results.sef.json" assert { type: "json" };
+import extractFromRng from "./sef/ExtractSchFromRNG-2.sef.json" with { type: "json" };
+import svrlPipeline from "./sef/pipeline-for-svrl.sef.json" with { type: "json" };
+import runner from "./sef/runner.sef.json" with { type: "json" };
+import results from "./sef/results.sef.json" with { type: "json" };
 
 class Stylesheet {
   constructor(sef) {
